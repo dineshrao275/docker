@@ -5,7 +5,7 @@ Docker is a containerization platform that packages applications and their depen
 
 ## Basic Image Operations
 
-==> Pull Images
+### Pull Images
 ```bash
 # Pull latest version of an image
 $ docker pull nginx
@@ -17,7 +17,7 @@ $ docker pull nginx:1.21-alpine
 $ docker pull mcr.microsoft.com/dotnet/core/aspnet:3.1
 ```
 
-==> List Images
+### List Images
 ```bash
 # List all images
 $ docker images
@@ -29,7 +29,7 @@ $ docker images --format "table {{.Repository}}\t{{.Tag}}\t{{.Size}}"
 $ docker images -q
 ```
 
-==> Remove Images
+### Remove Images
 ```bash
 # Remove single image
 $ docker rmi nginx
@@ -46,7 +46,7 @@ $ docker rmi -f nginx
 
 ## Container Operations
 
-==> Run Containers
+### Run Containers
 ```bash
 # Basic run
 $ docker run nginx
@@ -73,7 +73,7 @@ $ docker run -v /host/path:/container/path -d nginx
 $ docker run --memory="512m" --cpus="1.5" -d nginx
 ```
 
-==> List Containers
+### List Containers
 ```bash
 # List running containers
 $ docker ps
@@ -88,7 +88,7 @@ $ docker ps -q
 $ docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
 ```
 
-==> Container Lifecycle
+### Container Lifecycle
 ```bash
 # Start stopped container
 $ docker start my-nginx
@@ -109,7 +109,7 @@ $ docker unpause my-nginx
 $ docker kill my-nginx
 ```
 
-==> Remove Containers
+### Remove Containers
 ```bash
 # Remove stopped container
 $ docker rm my-nginx
@@ -126,7 +126,7 @@ $ docker run --rm -it ubuntu /bin/bash
 
 ## Container Inspection & Debugging
 
-==> View Logs
+### View Logs
 ```bash
 # View container logs
 $ docker logs my-nginx
@@ -141,7 +141,7 @@ $ docker logs --tail 100 my-nginx
 $ docker logs -t my-nginx
 ```
 
-==> Execute Commands in Container
+### Execute Commands in Container
 ```bash
 # Access bash shell
 $ docker exec -it my-nginx /bin/bash
@@ -153,7 +153,7 @@ $ docker exec my-nginx ls -la /etc
 $ docker exec -u root -it my-nginx /bin/bash
 ```
 
-==> Inspect Container
+### Inspect Container
 ```bash
 # Get detailed container info
 $ docker inspect my-nginx
@@ -170,7 +170,7 @@ $ docker top my-nginx
 
 ## Docker Networking
 
-==> Network Operations
+### Network Operations
 ```bash
 # List networks
 $ docker network ls
@@ -194,7 +194,7 @@ $ docker network disconnect my-network my-nginx
 $ docker network inspect my-network
 ```
 
-==> Run Container with Network
+### Run Container with Network
 ```bash
 # Run container in specific network
 $ docker run --network my-network -d nginx
@@ -205,7 +205,7 @@ $ docker run --network my-network --hostname web-server -d nginx
 
 ## Docker Volumes
 
-==> Volume Operations
+### Volume Operations
 ```bash
 # List volumes
 $ docker volume ls
@@ -223,7 +223,7 @@ $ docker volume prune
 $ docker volume inspect my-volume
 ```
 
-==> Using Volumes
+### Using Volumes
 ```bash
 # Mount named volume
 $ docker run -v my-volume:/app/data -d nginx
@@ -240,7 +240,7 @@ $ docker run -v my-new-volume:/data -d nginx
 
 # Docker Compose
 
-==> Basic Compose Commands
+### Basic Compose Commands
 ```bash
 # Start services (detached mode)
 $ docker-compose up -d
@@ -267,7 +267,7 @@ $ docker-compose up --build -d
 $ docker-compose up --scale web=3 -d
 ```
 
-==> Example docker-compose.yml
+### Example docker-compose.yml
 ```yaml
 version: '3.8' # it is ooptional for current versions of docker.
 services:
@@ -291,7 +291,7 @@ volumes:
 
 ## Building Images (Dockerfile)
 
-==> Basic Dockerfile Commands
+### Basic Dockerfile Commands
 ```dockerfile
 # Example Dockerfile
 FROM node:16-alpine
@@ -303,7 +303,7 @@ EXPOSE 3000
 CMD ["npm", "start"]
 ```
 
-==> Build Commands
+### Build Commands
 ```bash
 # Build image from Dockerfile
 $ docker build -t my-app .
@@ -320,7 +320,7 @@ $ docker build --no-cache -t my-app .
 
 ## System Cleanup
 
-==> Cleanup Commands
+### Cleanup Commands
 ```bash
 # Remove unused containers, networks, images
 $ docker system prune
@@ -346,7 +346,7 @@ $ docker network prune
 
 ## Additional Useful Commands
 
-==> Copy Files
+### Copy Files
 ```bash
 # Copy from container to host
 $ docker cp my-nginx:/etc/nginx/nginx.conf ./nginx.conf
@@ -355,7 +355,7 @@ $ docker cp my-nginx:/etc/nginx/nginx.conf ./nginx.conf
 $ docker cp ./app.js my-nginx:/usr/share/nginx/html/
 ```
 
-==> Save/Load Images
+### Save/Load Images
 ```bash
 # Save image to tar file
 $ docker save -o nginx.tar nginx:latest
@@ -370,7 +370,7 @@ $ docker export my-nginx > nginx-container.tar
 $ docker import nginx-container.tar my-nginx:latest
 ```
 
-==> Docker Hub Operations
+### Docker Hub Operations
 ```bash
 # Login to Docker Hub
 $ docker login
